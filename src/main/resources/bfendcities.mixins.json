@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "vice.BFEndCities.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "bfendcities.refmap.json",
+  "mixins": [
+    "EndCityBridgeMixin",
+    "EndCityPiecesMixin",
+    "EndCityTowerMixin",
+    "HouseTowerGeneratorMixin"
+  ],
+  "minVersion": "0.8",
+  "client": [
+  ]
+}
