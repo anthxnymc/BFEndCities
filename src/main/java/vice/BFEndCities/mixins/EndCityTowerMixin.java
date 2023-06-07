@@ -7,14 +7,15 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Random;
+import net.minecraft.util.RandomSource;
 
 
 // Fat Tower
-@Mixin(targets = "net.minecraft.world.level.levelgen.structure.EndCityPieces$4")
+@Mixin(targets = "net.minecraft.world.level.levelgen.structure.structures.EndCityPieces$4")
 public class EndCityTowerMixin
 {
     @Redirect(at = @At(value = "INVOKE", target = "Ljava/util/Random;nextInt(I)I"), method = "generate")
-    public int getCloudHeight(Random instance, int bound)
+    public int getCloudHeight(RandomSource instance, int bound)
     {
         return instance.nextInt(8);
     }
