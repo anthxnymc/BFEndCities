@@ -1,10 +1,12 @@
 package vice.BFEndCities.mixins;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.structures.EndCityPieces;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -34,7 +36,7 @@ public class HouseTowerGeneratorMixin
      * @author Team Deus Vult
      */
     @Overwrite()
-    public boolean generate(StructureManager p_71161_, int p_71162_, EndCityPieces.EndCityPiece p_71163_, BlockPos p_71164_, List<StructurePiece> p_71165_, Random p_71166_) {
+    public boolean generate(StructureTemplateManager p_71161_, int p_71162_, EndCityPieces.EndCityPiece p_71163_, BlockPos p_71164_, List<StructurePiece> p_71165_, RandomSource p_71166_) {
         if (p_71162_ > 16) {
             return false;
         } else {
