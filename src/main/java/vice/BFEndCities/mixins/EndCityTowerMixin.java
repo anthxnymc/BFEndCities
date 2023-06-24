@@ -1,5 +1,6 @@
 package vice.BFEndCities.mixins;
 
+import net.minecraft.util.RandomSource;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -10,11 +11,11 @@ import java.util.Random;
 
 
 // Fat Tower
-@Mixin(targets = "net.minecraft.world.level.levelgen.structure.EndCityPieces$4")
+@Mixin(targets = "net.minecraft.world.level.levelgen.structure.structures.EndCityPieces$4")
 public class EndCityTowerMixin
 {
-    @Redirect(at = @At(value = "INVOKE", target = "Ljava/util/Random;nextInt(I)I"), method = "generate")
-    public int getCloudHeight(Random instance, int bound)
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextInt(I)I"), method = "generate")
+    public int getCloudHeight(RandomSource instance, int bound)
     {
         return instance.nextInt(8);
     }

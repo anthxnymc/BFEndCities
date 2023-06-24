@@ -1,10 +1,10 @@
 package vice.BFEndCities.mixins;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.structure.EndCityPieces;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
+import net.minecraft.world.level.levelgen.structure.structures.EndCityPieces;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -16,7 +16,7 @@ import java.util.Random;
 
 // BRIDGE
 @Pseudo
-@Mixin(targets = "net.minecraft.world.level.levelgen.structure.EndCityPieces$3")
+@Mixin(targets = "net.minecraft.world.level.levelgen.structure.structures.EndCityPieces$3")
 public class EndCityBridgeMixin
 {
     @Shadow public boolean shipCreated;
@@ -27,7 +27,7 @@ public class EndCityBridgeMixin
      * @author Team Deus Vult
      */
     @Overwrite
-    public boolean generate(StructureManager p_71180_, int p_71181_, EndCityPieces.EndCityPiece p_71182_, BlockPos p_71183_, List<StructurePiece> p_71184_, Random p_71185_) {
+    public boolean generate(StructureTemplateManager p_71180_, int p_71181_, EndCityPieces.EndCityPiece p_71182_, BlockPos p_71183_, List<StructurePiece> p_71184_, Random p_71185_) {
         Rotation rotation = p_71182_.placeSettings.getRotation();
 
         int i = p_71185_.nextInt(4) + 1;

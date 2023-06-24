@@ -1,11 +1,12 @@
 package vice.BFEndCities.mixins;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.Tuple;
+import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.structure.EndCityPieces;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
+import net.minecraft.world.level.levelgen.structure.structures.EndCityPieces;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,12 +16,12 @@ import java.util.List;
 import java.util.Random;
 
 //TOWER_GENERATOR
-@Mixin(targets = "net.minecraft.world.level.levelgen.structure.EndCityPieces$2")
+@Mixin(targets = "net.minecraft.world.level.levelgen.structure.structures.EndCityPieces$2")
 public class EndCityPiecesMixin
 {
 
-    @Redirect(at = @At(value = "INVOKE", target = "Ljava/util/Random;nextInt(I)I", ordinal = 3), method = "generate")
-    public int getCloudHeight(Random instance, int bound)
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextInt(I)I", ordinal = 3), method = "generate")
+    public int getCloudHeight(RandomSource instance, int bound)
     {
         return instance.nextInt(bound + 2);
     }
